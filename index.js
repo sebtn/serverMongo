@@ -2,9 +2,13 @@ const express = require('express')
 const http = require('http')
 const morgan = require('morgan') // middleware to login
 const bodyParser = require('body-parser') // middleware parse into json
+const mongoose = require('mongoose')
 
 const router = require('./router')
 const app = express() // instance app
+
+//Db setup
+mongoose.connect('mongodb://localhost:auth/auth')
 
 // configure app, get express to work how we want
 app.use(morgan('combined'))
@@ -15,4 +19,4 @@ router(app)
 const port = process.env.PORT || 3090 
 const server = http.createServer(app) // add functionality to app
 server.listen(port)
-console.log('Now listening port localhost//:' + port)
+console.log('Now listening port localhost//:' + port) 
