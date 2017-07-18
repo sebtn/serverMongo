@@ -10,8 +10,7 @@ tokenForUser = (user) => {
 
 /*------------------------------------------------------------*/
 exports.signin = (req, res, next) => {
-  // user already email an pw auth
-  // give em tokens
+  res.send({ token: tokenForUser(req.user) })
 }
 
 /*------------------------------------------------------------*/
