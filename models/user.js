@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
 const Schema = mongoose.Schema 
 
-/*------------------------------------------------------------*/
 /*Model construction, fields to use*/
+/*------------------------------------------------------------*/
 const userSchema = new Schema({
   email:{ type: String, unique: true, lowercase: true },
   password: String
@@ -35,8 +35,8 @@ userSchema.methods.comparePassword = function (candidatePassword, cb)  {
   })
 }
 
-/*------------------------------------------------------------*/
 /*Model class for all users*/
+/*------------------------------------------------------------*/
 const modelClass = mongoose.model('user', userSchema)
 
 module.exports = modelClass

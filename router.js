@@ -17,7 +17,7 @@ const requireSignin = passport.authenticate(
 module.exports =  (app) => {
   /*POST typeOf http-req */
   app.get('/', requireAuth, (req, res) => {
-    res.send( {hi: "there"} )
+    res.send({ message: "code R" })
   })
   app.post('/signup', Authentication.signup)
   app.post('/signin', requireSignin, Authentication.signin)

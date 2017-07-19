@@ -10,6 +10,7 @@ tokenForUser = (user) => {
 
 /*------------------------------------------------------------*/
 exports.signin = (req, res, next) => {
+  // user = req.user
   res.send({ token: tokenForUser(req.user) })
 }
 

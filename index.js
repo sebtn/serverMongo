@@ -5,19 +5,23 @@ const bodyParser = require('body-parser') // middleware parse into json
 const mongoose = require('mongoose')
 
 const router = require('./router')
-const app = express() // instance app
 
-/*------------------------------------------------------------*/
-//Db setup
+/*
+  Db setup
+*/
 mongoose.connect('mongodb://localhost:auth/auth')
 
-// configure app, get express to work how we want
+/* configure app, get express to 
+   work how we want */
+const app = express() // instance app
 app.use(morgan('combined'))
 app.use(bodyParser.json( {type: '*/*'} )) 
 router(app)
 
-// Server setup, how the server talks to outsiders 
+/* Server setup, how the server 
+   talks to outsiders  */
 const port = process.env.PORT || 3090 
 const server = http.createServer(app) // add functionality to app
 server.listen(port)
-console.log('Now listening port localhost//:' + port) 
+console.log('Now listening port localhost//:' 
+  + port) 
