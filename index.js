@@ -3,6 +3,7 @@ const http = require('http')
 const morgan = require('morgan') // middleware to login
 const bodyParser = require('body-parser') // middleware parse into json
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const router = require('./router')
 
@@ -15,6 +16,7 @@ mongoose.connect('mongodb://localhost:auth/auth')
    work how we want */
 const app = express() // instance app
 app.use(morgan('combined'))
+app.use(cors())
 app.use(bodyParser.json( {type: '*/*'} )) 
 router(app)
 
